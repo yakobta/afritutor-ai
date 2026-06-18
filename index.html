@@ -3,53 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AfriTutor Chat — Redesigned</title>
+  <title>AfriTutor — 3D Metaverse</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main id="chat-app" class="app" aria-labelledby="app-title">
-    <h1 id="app-title" class="visually-hidden">AfriTutor Chat</h1>
+  <!-- 3D background canvas (aria-hidden) -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <section class="chat-header">
-      <div class="brand">
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="url(#g)"/></svg>
-        <div class="title">AfriTutor</div>
-      </div>
-      <div class="controls">
-        <button id="clear-session" class="btn" aria-label="Clear chat session">Clear</button>
-      </div>
-    </section>
+  <div class="ui-overlay">
+    <header class="top-controls">
+      <button id="toggle-3d" class="btn" aria-pressed="true">Toggle 3D</button>
+      <button id="enter-xr" class="btn">Enter XR</button>
+      <div class="title">AfriTutor Metaverse — 3D Hub</div>
+    </header>
 
-    <section id="conversation" class="conversation" role="log" aria-live="polite" tabindex="0"></section>
+    <main id="chat-app" class="app" aria-labelledby="app-title">
+      <h1 id="app-title" class="visually-hidden">AfriTutor 3D</h1>
 
-    <form id="composer" class="composer" autocomplete="off" aria-label="Message composer">
-      <label for="input" class="visually-hidden">Type your message</label>
-      <div class="composer-inner">
-        <textarea id="input" rows="1" placeholder="Type a message... (English, Amharic, Kiswahili)" aria-label="Message input"></textarea>
-        <div class="composer-actions">
-          <button type="button" id="send" class="btn primary" aria-label="Send message">Send</button>
+      <section class="chat-header">
+        <div class="brand">
+          <div class="title">AfriTutor</div>
         </div>
-      </div>
-    </form>
+        <div class="controls">
+          <button id="clear-session" class="btn" aria-label="Clear chat session">Clear</button>
+        </div>
+      </section>
 
-    <template id="msg-template">
-      <article class="message" data-role="message">
-        <div class="avatar" aria-hidden="true"></div>
-        <div class="bubble">
-          <div class="meta">
-            <span class="name"></span>
-            <span class="lang-badge" aria-hidden="true"></span>
-            <time class="ts" datetime=""></time>
-            <span class="status" aria-hidden="true"></span>
+      <section id="conversation" class="conversation" role="log" aria-live="polite" tabindex="0"></section>
+
+      <form id="composer" class="composer" autocomplete="off" aria-label="Message composer">
+        <label for="input" class="visually-hidden">Type your message</label>
+        <div class="composer-inner">
+          <textarea id="input" rows="1" placeholder="Type a message... (English, Amharic, Kiswahili)" aria-label="Message input"></textarea>
+          <div class="composer-actions">
+            <button type="button" id="send" class="btn primary" aria-label="Send message">Send</button>
           </div>
-          <div class="content" tabindex="0"></div>
-          <div class="actions"></div>
         </div>
-      </article>
-    </template>
+      </form>
 
-  </main>
+    </main>
+  </div>
 
+  <script type="module" src="3d/scene.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
