@@ -1,0 +1,33 @@
+/* lms/style.css
+   - Mobile-first, accessible, and polished visual system
+   - 3D tilt cards, progress rings, mastery levels, achievements
+*/
+:root{--bg:#071126;--card:#0f1724;--muted:#9aa4b2;--accent1:#ff9a00;--accent2:#d946ef;--glass:rgba(255,255,255,0.03)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,#071126 0%, #071726 100%);color:#eaf2ff;padding:18px}
+.lms-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.lms-root{display:flex;gap:18px}
+.subjects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;flex:1}
+.subject-card{perspective:900px;cursor:grab}
+.card-inner{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease, box-shadow .18s ease;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04)}
+.subject-card[aria-grabbed='true'] .card-inner{transform:scale(1.02) rotateZ(1deg);box-shadow:0 12px 30px rgba(0,0,0,0.6)}
+.card-inner:focus{outline:3px solid rgba(255,255,255,0.04)}
+.card-top{display:flex;gap:12px;align-items:center}
+.avatar{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+.subject-title{margin:0;font-size:16px}
+.meta{font-size:12px;color:var(--muted)}
+.progress-wrap{display:flex;align-items:center;gap:12px}
+.progress-ring{width:60px;height:60px}
+.progress-ring .bg{fill:none;stroke:rgba(255,255,255,0.03);stroke-width:4}
+.progress-ring .fg{fill:none;stroke:var(--accent1);stroke-width:4;stroke-linecap:round;transform-origin:center;transform:rotate(-90deg)}
+.mastery{font-weight:700;color:#fff}
+.card-actions{display:flex;gap:8px}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer}
+.btn:focus{outline:3px solid rgba(255,255,255,0.06)}
+.analytics{width:320px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+#radar, #heatmap{height:180px;margin-top:8px}
+/* tilt effect */
+.subject-card .card-inner:hover{transform:translateY(-6px) rotateX(6deg)}
+/* drag placeholder */
+.subject-card.placeholder{opacity:0.5;border:2px dashed rgba(255,255,255,0.06)}
+@media (max-width:900px){.lms-root{flex-direction:column}.analytics{width:100%}}
